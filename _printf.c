@@ -56,13 +56,10 @@ int _printf(const char *format, ...)
 		{'f', fnFloat},
 		{'s', fnStr}
 	};
-
-	int iformat = 0, lenformat = 0;
-	int ifmt;
+	int ifmt, iformat = 0, lenformat = 0;
 	va_list al;
 
 	va_start(al, format);
-
 	while (format && format[iformat] != '\0')
 	{
 		if (format[iformat] == '%')
@@ -70,11 +67,9 @@ int _printf(const char *format, ...)
 			iformat++;
 			ifmt = 0;
 			if (format[iformat] == '%')
-			{
 				printf("%%");
-			}
 			else
-			{		
+			{
 				while (fmts[ifmt].in != '\0')
 				{
 					if (fmts[ifmt].in == format[iformat])
@@ -87,9 +82,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			printf("%c", format[iformat]);
-		}
 		lenformat++;
 		iformat++;
 	}
