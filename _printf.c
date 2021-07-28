@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 #include "holberton.h"
 /**
  * fnChar - print char
@@ -15,7 +16,7 @@ void fnChar(va_list al)
  */
 void fnInt(va_list al)
 {
-	printf("%d", va_arg(al, unsigned char));
+	printf("%d", va_arg(al, int));
 }
 /**
  * fnStr - print Str
@@ -44,7 +45,7 @@ int _printf(const char *format, ...)
 	fmt fmts[] = {
 		{'c', fnChar},
 		{'i', fnInt},
-		{'d', fnFloat},
+		{'d', fnInt},
 		{'f', fnFloat},
 		{'s', fnStr}
 	};
