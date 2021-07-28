@@ -23,15 +23,7 @@ void fnInt(va_list al)
  */
 void fnStr(va_list al)
 {
-	char *mychar;
-
-	mychar = va_arg(al, char*);
-	if (mychar == NULL)
-	{
-		printf("(nil)");
-		return;
-	}
-	printf("%s", mychar);
+	printf("%s", va_arg(al, char*);
 }
 /**
  * fnFloat - print Float
@@ -59,8 +51,6 @@ int _printf(const char *format, ...)
 	int ifmt, iformat = 0, lenformat = 0;
 	va_list al;
 
-	if (format == NULL)
-		return (0);
 	va_start(al, format);
 	while (format && format[iformat] != '\0')
 	{
