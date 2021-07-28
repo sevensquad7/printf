@@ -11,4 +11,4 @@ typedef struct fmt
 	char in;
 	void (*fn)(va_list al);
 } fmt;
-#endif
+#endif /* _PRINTF_H */
