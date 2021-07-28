@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 	fmt fmts[] = {
 		{'c', fnChar},
 		{'i', fnInt},
-		{'d', fnInt},
+		{'d', fnFloat},
 		{'f', fnFloat},
 		{'s', fnStr}
 	};
