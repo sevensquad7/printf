@@ -4,11 +4,14 @@ _printf ()
 .B format and print data		
 .SH SYNOPSYS				
 int _printf(const char *format, ...);		
-.SH DESCRIPTION				
+.SH DESCRIPTION
 The functions of the _printf () family produce results according to the format established within them.		
 Print ARGUMENT(s) according to FORMAT.		
 .B Format string format			
-The format string is a character string that begins and ends in its initial change state, if any. The format string is made up of zero or more directives: ordinary characters (not%), which are copied without changes to the output stream; and specification conversion, each of which results in zero or more subsequent arguments. Each conversion specification is entered by the% character		
+The format string is a character string that begins and ends in its initial change state, if any.
+The format string is made up of zero or more directives: ordinary characters (not\fB%\fR),
+which are copied without changes to the output stream; and specification conversion,
+each of which results in zero or more subsequent arguments. Each conversion specification is entered by the% character		
 .B Conversion specifiers			
 A character that specifies the type of conversion to be applied.		
 The conversion specifiers and their meanings are:		
