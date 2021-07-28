@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 #include "holberton.h"
 /**
  * fnChar - print char
@@ -7,7 +8,7 @@
  */
 void fnChar(va_list al)
 {
-	printf("%c", va_arg(al, int));
+	putchar(va_arg(al, int));
 }
 /**
  * fnInt - print Int
@@ -23,15 +24,7 @@ void fnInt(va_list al)
  */
 void fnStr(va_list al)
 {
-	char *mychar;
-
-	mychar = va_arg(al, char*);
-	if (mychar == NULL)
-	{
-		printf("(nil)");
-		return;
-	}
-	printf("%s", mychar);
+	printf("%s", va_arg(al, char*));
 }
 /**
  * fnFloat - print Float
