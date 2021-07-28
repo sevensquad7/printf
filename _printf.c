@@ -26,14 +26,6 @@ void fnStr(va_list al)
 {
 	printf("%s", va_arg(al, char*));
 }
-/**
- * fnFloat - print Float
- * @al: argumento list
- */
-void fnFloat(va_list al)
-{
-	printf("%f", va_arg(al, double));
-}
 
 /**
  * _printf - print everything
@@ -43,12 +35,8 @@ void fnFloat(va_list al)
 int _printf(const char *format, ...)
 {
 	fmt fmts[] = {
-		{'c', fnChar},
-		{'i', fnInt},
-		{'d', fnInt},
-		{'f', fnFloat},
-		{'s', fnStr}
-	};
+		{'c', fnChar}, {'i', fnInt},
+		{'d', fnInt}, {'s', fnStr}};
 	int ifmt, iformat = 0, lenformat = 0;
 	va_list al;
 
@@ -60,8 +48,11 @@ int _printf(const char *format, ...)
 			iformat++;
 			ifmt = 0;
 			if (format[iformat] == '%')
-				printf("%%");
-			else
+			{
+				putchar('%');
+				putchar('%');
+			}
+				else
 			{
 				while (fmts[ifmt].in != '\0')
 				{
@@ -75,7 +66,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-			printf("%c", format[iformat]);
+			putchar(format[iformat]);
 		lenformat++;
 		iformat++;
 	}
