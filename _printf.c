@@ -5,15 +5,13 @@
 /**
  * fnChar - print char
  * @al: argument list
+ * Return: printf
  */
 void fnChar(va_list al)
 {
 	putchar(va_arg(al, int));
 }
-/**
- * fnStr - print Str
- * @al: argument list
- */
+
 void fnStr(va_list al)
 {
 	int i, len = 0;
