@@ -59,6 +59,8 @@ int _printf(const char *format, ...)
 	int ifmt, iformat = 0, lenformat = 0;
 	va_list al;
 
+	if (format == NULL)
+		return (0);
 	va_start(al, format);
 	while (format && format[iformat] != '\0')
 	{
