@@ -23,7 +23,7 @@ void fnInt(va_list al)
  */
 void fnStr(va_list al)
 {
-	printf("%s", va_arg(al, char*);
+	printf("%s", va_arg(al, char*));
 }
 /**
  * fnFloat - print Float
