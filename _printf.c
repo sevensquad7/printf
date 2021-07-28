@@ -5,22 +5,34 @@
 /**
  * fnChar - print char
  * @al: argument list
- * Return: printf
  */
 void fnChar(va_list al)
 {
 	putchar(va_arg(al, int));
 }
-
+/**
+ * fnInt - print Int
+ * @al: argument list
+ */
+void fnInt(va_list al)
+{
+	printf("%d", va_arg(al, int));
+}
+/**
+ * fnStr - print Str
+ * @al: argument list
+ */
 void fnStr(va_list al)
 {
-	int i, len = 0;
-	char *mychar = va_arg(al, char*);
-
-	while(*(mychar + len) != '\0')
-		len++;
-	for (i = 0; i < len - 1; i++)
-		putchar(*(mychar + i));
+	printf("%s", va_arg(al, char*));
+}
+/**
+ * fnFloat - print Float
+ * @al: argumento list
+ */
+void fnFloat(va_list al)
+{
+	printf("%f", va_arg(al, double));
 }
 
 /**
@@ -32,6 +44,9 @@ int _printf(const char *format, ...)
 {
 	fmt fmts[] = {
 		{'c', fnChar},
+		{'i', fnInt},
+		{'d', fnInt},
+		{'f', fnFloat},
 		{'s', fnStr}
 	};
 	int ifmt, iformat = 0, lenformat = 0;
@@ -45,11 +60,8 @@ int _printf(const char *format, ...)
 			iformat++;
 			ifmt = 0;
 			if (format[iformat] == '%')
-			{
-				putchar('%');
-				putchar('%');
-			}
-				else
+				printf("%%");
+			else
 			{
 				while (fmts[ifmt].in != '\0')
 				{
@@ -63,7 +75,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-			putchar(format[iformat]);
+			printf("%c", format[iformat]);
 		lenformat++;
 		iformat++;
 	}
