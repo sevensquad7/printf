@@ -72,6 +72,7 @@ int _printf(const char *format, ...)
 					}
 					ifmt++;
 				}
+				printf("%c", format[iformat]);
 			}
 		}
 		else
