@@ -5,6 +5,7 @@
 /**
  * fnChar - print char
  * @al: argument list
+ * Return: printf
  */
 void fnChar(va_list al)
 {
@@ -13,6 +14,8 @@ void fnChar(va_list al)
 /**
  * fnInt - print Int
  * @al: argument list
+ * %d: format parameter
+ * Return: printf 
  */
 void fnInt(va_list al)
 {
@@ -21,6 +24,8 @@ void fnInt(va_list al)
 /**
  * fnStr - print Str
  * @al: argument list
+ * %s: format parameter
+ * Return: printf
  */
 void fnStr(va_list al)
 {
@@ -29,6 +34,8 @@ void fnStr(va_list al)
 /**
  * fnFloat - print Float
  * @al: argumento list
+ * %f: format parameter
+ * Return: printf
  */
 void fnFloat(va_list al)
 {
