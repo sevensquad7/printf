@@ -24,4 +24,3 @@ The conversion specifiers and their meanings are:
 - specifier displays the printing of the integral values of integers. recognizes prefixes 0 and 0x as octal and hexadecimal		
 .SH AUTHOR'S				
 -Written by Sammy Sam and Edgar Flores		
-
