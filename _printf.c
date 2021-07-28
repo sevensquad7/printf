@@ -8,7 +8,7 @@
  */
 void fnChar(va_list al)
 {
-	printf("%c", va_arg(al, int));
+	putchar(va_arg(al, int));
 }
 /**
  * fnInt - print Int
