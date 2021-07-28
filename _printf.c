@@ -15,7 +15,7 @@ void fnChar(va_list al)
  */
 void fnInt(va_list al)
 {
-	printf("%d", va_arg(al, int));
+	printf("%d", va_arg(al, unsigned char));
 }
 /**
  * fnStr - print Str
