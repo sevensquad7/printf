@@ -7,24 +7,45 @@
 /**
  * fnChar - print char
  * @al: argument list
+ * @buf: buffer with string to print
+ * Return: size of argument
  */
-int fnChar(va_list al, __attribute__((unused)) char **buff)
+int fnChar(va_list al, char **buf)
 {
-	putchar(va_arg(al, int));
-	return (0);
+	int count = 0;
+	char c;
+
+	c = (va_arg(al, int));
+	**buf = c;
+	count++;
+	return (count);
 }
 /**
  * fnInt - print Int
  * @al: argument list
+ * @buf: buffer with string to print
+ * Return: size of argument
  */
-int fnInt(va_list al, __attribute__((unused)) char **buf)
+int fnInt(va_list al, char **buf)
 {
-	printf("%d", va_arg(al, int));
-	return (0);
+	int count = 0;
+	char number_str[10];
+	int number = va_arg(al, int);
+
+	sprintf(number_str, "%d", number);
+	while (number_str[count])
+	{
+		**buf = number_str[count];
+		(*buf)++;
+		count++;
+	}
+	return (count);
 }
 /**
  * fnStr - print Str
  * @al: argument list
+ * @buf: buffer with string to print
+ * Return: size of argument
  */
 int fnStr(va_list al, char **buf)
 {
@@ -47,6 +68,8 @@ int fnStr(va_list al, char **buf)
 /**
  * fnFloat - print Float
  * @al: argumento list
+ * @buf: buffer with string to print
+ * Return: size of argument
  */
 int fnFloat(va_list al, __attribute__((unused)) char **buf)
 {
@@ -62,29 +85,19 @@ int fnFloat(va_list al, __attribute__((unused)) char **buf)
 int _printf(const char *format, ...)
 {
 	fmt fmts[] = {
-		{'c', fnChar},
-		{'i', fnInt},
-		{'d', fnInt},
-		{'f', fnFloat},
-		{'s', fnStr}
-	};
+		{'c', fnChar}, { 'i', fnInt}, {'d', fnInt}, {'f', fnFloat}, {'s', fnStr}};
 	int ifmt, iformat = 0, count = 0;
 	va_list al;
-	char buf[2000];
-	char *pbuf;
+	char buf[2000], *pbuf = buf;
 
-	pbuf = buf;
 	va_start(al, format);
-	
 	while (format && format[iformat] != '\0')
 	{
 		if (format[iformat] == '%')
 		{
 			iformat++;
 			ifmt = 0;
-			if (format[iformat] == '%')
-				printf("%%");
-			else
+			if (format[iformat] != '%')
 			{
 				while (fmts[ifmt].in != '\0')
 				{
@@ -96,15 +109,22 @@ int _printf(const char *format, ...)
 					ifmt++;
 				}
 			}
+			else
+			{
+				*pbuf = format[iformat];
+				pbuf++;
+				count++;
+			}
 		}
 		else
 		{
 			*pbuf = format[iformat];
 			pbuf++;
+			count++;
 		}
 		iformat++;
 	}
-	_putchar(buf, pbuf - (char*)buf);
+	_putchar(buf, pbuf - (char *)buf);
 	va_end(al);
 	return (count);
 }
