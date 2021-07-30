@@ -1,38 +1,57 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "holberton.h"
+
 /**
  * fnChar - print char
  * @al: argument list
  */
-void fnChar(va_list al)
+int fnChar(va_list al, __attribute__((unused)) char **buff)
 {
 	putchar(va_arg(al, int));
+	return (0);
 }
 /**
  * fnInt - print Int
  * @al: argument list
  */
-void fnInt(va_list al)
+int fnInt(va_list al, __attribute__((unused)) char **buf)
 {
 	printf("%d", va_arg(al, int));
+	return (0);
 }
 /**
  * fnStr - print Str
  * @al: argument list
  */
-void fnStr(va_list al)
+int fnStr(va_list al, char **buf)
 {
-	printf("%s", va_arg(al, char*));
+	int count = 0;
+	char *str;
+
+	str = (va_arg(al, char*));
+	if (str == NULL)
+		str = "(null)";
+	while (*str)
+	{
+		**buf = *str;
+		(*buf)++;
+		str++;
+		count++;
+	}
+	return (count);
 }
+
 /**
  * fnFloat - print Float
  * @al: argumento list
  */
-void fnFloat(va_list al)
+int fnFloat(va_list al, __attribute__((unused)) char **buf)
 {
 	printf("%f", va_arg(al, double));
+	return (0);
 }
 
 /**
@@ -49,10 +68,14 @@ int _printf(const char *format, ...)
 		{'f', fnFloat},
 		{'s', fnStr}
 	};
-	int ifmt, iformat = 0, lenformat = 0;
+	int ifmt, iformat = 0, count = 0;
 	va_list al;
+	char buf[2000];
+	char *pbuf;
 
+	pbuf = buf;
 	va_start(al, format);
+	
 	while (format && format[iformat] != '\0')
 	{
 		if (format[iformat] == '%')
@@ -67,7 +90,7 @@ int _printf(const char *format, ...)
 				{
 					if (fmts[ifmt].in == format[iformat])
 					{
-						fmts[ifmt].fn(al);
+						count += fmts[ifmt].fn(al, &pbuf);
 						break;
 					}
 					ifmt++;
@@ -75,10 +98,13 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-			printf("%c", format[iformat]);
-		lenformat++;
+		{
+			*pbuf = format[iformat];
+			pbuf++;
+		}
 		iformat++;
 	}
+	_putchar(buf, pbuf - (char*)buf);
 	va_end(al);
-	return (lenformat);
+	return (count);
 }

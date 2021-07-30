@@ -1,6 +1,7 @@
 #ifndef _PRINTF_H
 #define _PRINTF_H
 int _printf(const char *format, ...);
+int _putchar(char *buffer, int size_buffer);
 /**
  * struct fmt - to link given char to function to print
  * @in: char evaluated
@@ -9,6 +10,6 @@ int _printf(const char *format, ...);
 typedef struct fmt
 {
 	char in;
-	void (*fn)(va_list al);
+	int (*fn)(va_list al, char **pbuf);
 } fmt;
 #endif /* _PRINTF_H */
