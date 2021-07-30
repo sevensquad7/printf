@@ -5,6 +5,7 @@ int _putchar(char *buffer, int size_buffer);
 int fnChar(va_list al, __attribute__((unused)) char **buff);
 int fnStr(va_list al, char **buf);
 int fnInt(va_list al, __attribute__((unused)) char **buf);
+int fnFloat(va_list al, __attribute__((unused)) char **buf);
 /**
  * struct fmt - to link given char to function to print
  * @in: char evaluated
