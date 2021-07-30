@@ -13,10 +13,9 @@
 int fnChar(va_list al, char **buf)
 {
 	int count = 0;
-	char c;
 
-	c = (va_arg(al, int));
-	**buf = c;
+	**buf = va_arg(al, int);
+	(*buf)++;
 	count++;
 	return (count);
 }
