@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "holberton.h"
+#include "main.h"
 
 /**
  * _printf - print everything
@@ -53,5 +53,7 @@ int _printf(const char *format, ...)
 	}
 	_putchar(buf, pbuf - (char *)buf);
 	va_end(al);
+	if (format == NULL)
+		count = -1;
 	return (count);
 }
